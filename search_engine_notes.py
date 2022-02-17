@@ -62,4 +62,7 @@ print(td_matrix[t2i["example"]] | td_matrix[t2i["better"]])
 
 print(1 - td_matrix[t2i["example"]])
 
+#11 And now a query with multiple operators. ("example" AND "better") OR "this"
+
+print((td_matrix[t2i["example"]] & td_matrix[t2i["better"]]) | td_matrix[t2i["this"]])
 
