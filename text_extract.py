@@ -1,4 +1,4 @@
-print "Hello world!"
+print("Hello world!")
 import nltk
 import urllib
 from urllib import request
