@@ -14,7 +14,7 @@ wiki100 = documents_library.wiki100
 
 #   QUERY PROMPT
 
-queryInput = input("Searching for: ")
+queryInput = input("Searching for: ").lower()
 
 #   MAKING A MATRIX
 
