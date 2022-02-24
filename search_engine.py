@@ -14,8 +14,8 @@ wiki100 = documents_library.wiki100
 
 #   QUERY PROMPT
 
-#queryInput = input("Searching for: ")
-#print("Searching for \"" + queryInput + "\"...") # So this is just a placeholder to be replaced with correct functionality
+queryInput = input("Searching for: ")
+print("Searching for \"" + queryInput + "\"...") # So this is just a placeholder to be replaced with correct functionality
 
 #   MAKING A MATRIX
 
@@ -45,14 +45,22 @@ def rewrite_token(t):
 def rewrite_query(query): # rewrite every token in the query
     return " ".join(rewrite_token(t) for t in query.split())
 
-def test_query(query):
-    print("Query: '" + query + "'")
-    print("Rewritten:", rewrite_query(query))
-    print("Matching:", eval(rewrite_query(query))) # Eval runs the string as a Python command
-    print()
+#def test_query(query):
+#    print("Query: '" + query + "'")
+#    print("Rewritten:", rewrite_query(query))
+#    print("Matching:", eval(rewrite_query(query))) # Eval runs the string as a Python command
+#    print()
+#
+#test_query("example AND NOT nothing")
+#test_query("NOT example OR great")
+#test_query("( NOT example OR great ) AND nothing") # AND, OR, NOT can be written either in ALLCAPS
+#test_query("( not example or great ) and nothing") # ... or all small letters
+#test_query("not example and not nothing")
 
-test_query("example AND NOT nothing")
-test_query("NOT example OR great")
-test_query("( NOT example OR great ) AND nothing") # AND, OR, NOT can be written either in ALLCAPS
-test_query("( not example or great ) and nothing") # ... or all small letters
-test_query("not example and not nothing")
+hits_matrix = eval(rewrite_query(queryInput))
+hits_list = list(hits_matrix.nonzero()[1])
+print(hits_list)
+
+for doc_idx in hits_list:
+    print("Matching doc:", wiki100[doc_idx], "\n\n\n\n\n")
+
