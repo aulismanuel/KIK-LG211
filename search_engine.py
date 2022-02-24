@@ -15,7 +15,6 @@ wiki100 = documents_library.wiki100
 #   QUERY PROMPT
 
 queryInput = input("Searching for: ")
-print("Searching for \"" + queryInput + "\"...") # So this is just a placeholder to be replaced with correct functionality
 
 #   MAKING A MATRIX
 
@@ -59,8 +58,18 @@ def rewrite_query(query): # rewrite every token in the query
 
 hits_matrix = eval(rewrite_query(queryInput))
 hits_list = list(hits_matrix.nonzero()[1])
-print(hits_list)
 
-for doc_idx in hits_list:
-    print("Matching doc:", wiki100[doc_idx], "\n\n\n\n\n")
+print("Searching for \"" + queryInput + "\"...")
+if (len(hits_list) == 1):
+    print("One (1) matching article was found.")
+if (len(hits_list) > 1):
+    print("A total of " + str(len(hits_list)) + " matching articles were found.")
 
+#for i, doc_idx in enumerate(hits_list):
+#    print("Matching article #{:d}: {:s}".format(i, wiki100[doc_idx], "\n\n\n"))
+
+for i, doc_idx in enumerate(hits_list, start=1):
+    print("\n\nMatching article #" + str(i) + ":")
+    print(wiki100[doc_idx][0:1500])
+
+print("\n\nEnd of results.\n\n\n\n")
